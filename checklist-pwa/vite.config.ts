@@ -1,6 +1,10 @@
-import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import dotenv from 'dotenv'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+
+dotenv.config()
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,8 +17,8 @@ export default defineConfig({
         name: 'Enterprise Checklist Manager',
         short_name: 'Checklists',
         description: 'Mobile-first enterprise checklist management system',
-        theme_color: '#3b82f6',
-        background_color: '#ffffff',
+        theme_color: '#FDF351', // Primary yellow from design system
+        background_color: '#FFFCFF', // Surface base from design system
         display: 'standalone',
         orientation: 'portrait-primary',
         scope: '/',
@@ -65,6 +69,12 @@ export default defineConfig({
         ],
       },
     }),
+    visualizer({
+      open: true,
+      filename: 'stats.html',
+      gzipSize: true,
+      brotliSize: true,
+    }),
   ],
   build: {
     rollupOptions: {
@@ -73,6 +83,11 @@ export default defineConfig({
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           supabase: ['@supabase/supabase-js'],
           'ui-vendor': ['@headlessui/react', 'lucide-react'],
+          'query-vendor': ['@tanstack/react-query', '@tanstack/react-query-devtools'],
+          'pages-admin': ['./src/pages/admin/DashboardPage.tsx'],
+          'pages-manager': ['./src/pages/manager/DashboardPage.tsx'],
+          'components-ui': ['./src/components/ui/index.ts'],
+          'stores-queries': ['./src/queries/authQueries.ts', './src/queries/checklistQueries.ts', './src/queries/notificationQueries.ts', './src/queries/offlineQueries.ts'],
         },
       },
     },

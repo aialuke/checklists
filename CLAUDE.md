@@ -100,7 +100,7 @@ Before starting any development task:
 ### Technology Stack
 - **Frontend:** React 19, TypeScript 5.8, Vite 5.4
 - **UI:** Tailwind CSS 4.1, Headless UI, Lucide React icons
-- **State:** Zustand 5.0 for state management
+- **State:** TanStack Query 5.76 for server state, Zustand 5.0 for client/UI state
 - **Backend:** Supabase (PostgreSQL, Auth, Realtime)
 - **PWA:** vite-plugin-pwa with Workbox
 - **Forms:** React Hook Form 7.58
@@ -154,7 +154,8 @@ src/
 │   ├── layout/          # Layout and navigation
 │   └── ui/              # Shared UI components
 ├── pages/               # Route components
-├── stores/              # Zustand state stores
+├── stores/              # Client-side state stores (Zustand for UI state)
+├── queries/             # Server state management (TanStack Query)
 ├── services/            # API and business logic
 ├── hooks/               # Custom React hooks
 ├── utils/               # Utility functions
@@ -220,10 +221,35 @@ rg ": ExactItemName|extends ExactItemName|implements ExactItemName" . -n
 - Use React Hook Form for form handling
 - Follow mobile-first responsive design
 
-### State Management
-- Use Zustand stores for global state
-- Implement optimistic updates for offline support
-- Structure stores by feature (auth, checklist, notifications, etc.)
+### State Management Architecture
+
+**Hybrid State Management Pattern**: Server state and client state are managed by different libraries for optimal performance and developer experience.
+
+#### TanStack Query (Server State)
+- **Purpose**: All data that comes from the server
+- **Location**: `/src/queries/` directory
+- **Handles**: Authentication, checklists, notifications, offline sync data
+- **Benefits**: Automatic caching, background refetching, optimistic updates, error handling
+- **Files**:
+  - `authQueries.ts` - User authentication and profile data
+  - `checklistQueries.ts` - Checklist and task server data
+  - `notificationQueries.ts` - Server-sent notifications
+  - `offlineQueries.ts` - Offline sync queue management
+
+#### Zustand (Client/UI State)  
+- **Purpose**: Local UI state that doesn't come from server
+- **Location**: `/src/stores/` directory
+- **Handles**: Toast notifications, UI preferences, temporary form state
+- **Benefits**: Simple API, minimal boilerplate, React DevTools integration
+- **Files**:
+  - `notificationClientStore.ts` - Toast notifications and UI alerts
+  - Additional client stores as needed for UI-only state
+
+#### Migration Status
+- **Phase**: ✅ PHASE 5 COMPLETE (TanStack Query migration finished)
+- **Server State**: Fully migrated to TanStack Query
+- **Client State**: Remains in Zustand (by design)
+- **Legacy Code**: All legacy Zustand server state stores removed
 
 ## Development Guidelines
 

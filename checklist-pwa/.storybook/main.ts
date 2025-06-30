@@ -1,6 +1,8 @@
-import type { StorybookConfig } from '@storybook/react-vite'
-import { mergeConfig } from 'vite'
 import path from 'path'
+
+import { mergeConfig } from 'vite'
+
+import type { StorybookConfig } from '@storybook/react-vite'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)', '../src/**/*.story.@(js|jsx|ts|tsx|mdx)'],
@@ -42,11 +44,11 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: (prop) => (prop.parent ? !prop.parent.fileName.includes('node_modules') : true),
     },
   },
 
-  async viteFinal(config) {
+  viteFinal(config) {
     return mergeConfig(config, {
       resolve: {
         alias: {

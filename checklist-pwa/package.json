@@ -25,24 +25,51 @@
     "lighthouse": "lhci autorun",
     "validate": "npm run type-check && npm run lint && npm run format:check && npm run test:coverage && npm run knip",
     "validate:fix": "npm run lint:fix && npm run format && npm run knip:fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "find-duplicates": "jscpd"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "eslint --fix",
+    "*.{ts,tsx,js,jsx,json,css,md}": "prettier --write"
+  },
+  "jscpd": {
+    "threshold": 5,
+    "reporters": [
+      "html",
+      "console"
+    ],
+    "absolute": true,
+    "paths": [
+      "src"
+    ],
+    "ignore": [
+      "**/*.d.ts",
+      "**/*.spec.ts",
+      "**/*.test.ts",
+      "src/test/**"
+    ],
+    "min-tokens": 50,
+    "glob-options": {
+      "ignore": [
+        "**/node_modules/**"
+      ]
+    }
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.50.1",
-    "date-fns": "^4.1.0",
-    "idb": "^8.0.0",
+    "@tanstack/query-sync-storage-persister": "^5.76.0",
+    "@tanstack/react-query": "^5.76.0",
+    "@tanstack/react-query-devtools": "^5.76.0",
+    "@tanstack/react-query-persist-client": "^5.76.0",
     "immer": "^10.1.1",
     "lucide-react": "^0.523.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-hook-form": "^7.58.1",
-    "react-router-dom": "^7.6.2",
-    "react-window": "^1.8.10",
+    "react-error-boundary": "^6.0.0",
+    "react-router": "^7.6.2",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
-    "@headlessui/react": "^2.2.4",
     "@lhci/cli": "^0.14.0",
     "@playwright/test": "^1.47.2",
     "@storybook/addon-a11y": "^8.4.0",
@@ -54,19 +81,17 @@
     "@tailwindcss/postcss": "^4.1.10",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
-    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^24.0.4",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@types/react-window": "^1.8.8",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "@typescript-eslint/parser": "^8.35.0",
-    "@use-gesture/react": "^10.3.1",
     "@vitejs/plugin-react": "^4.6.0",
     "@vitest/coverage-v8": "^1.6.0",
     "@vitest/ui": "^1.6.0",
     "autoprefixer": "^10.4.21",
     "chromatic": "^11.20.0",
+    "dotenv": "^16.5.0",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-import-resolver-typescript": "^4.4.3",

@@ -25,8 +25,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navigation />
           <main className='min-h-screen bg-gray-50'>{children}</main>
           <OfflineIndicator />
-          <Toaster 
-            position="bottom-right"
+          <Toaster
+            position='bottom-right'
             toastOptions={{
               duration: 3000,
               style: {

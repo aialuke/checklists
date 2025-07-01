@@ -122,6 +122,8 @@ const config: KnipConfig = {
   ignoreDependencies: [
     // ESLint plugins used through configuration but not directly imported
     '@typescript-eslint/eslint-plugin', // Used through ESLint rules in .eslintrc.json
+    // Bundle analysis tools used via CLI but not directly imported
+    'webpack-bundle-analyzer', // Used for bundle analysis via npx
     // Keep these as they're genuinely used in build/dev but not directly imported
   ],
 

@@ -1,15 +1,13 @@
-import { requireRole } from '@/lib/auth'
-import { DashboardGrid } from './dashboard-grid'
+import { requireRole } from '@/lib/auth';
+import { DashboardGrid } from './dashboard-grid';
 
 export default async function DashboardPage() {
-  await requireRole('MANAGER')
+  await requireRole('MANAGER');
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">
-        Manager Dashboard
-      </h1>
+    <div className='container mx-auto py-8'>
+      <h1 className='mb-8 text-3xl font-bold text-gray-900'>Manager Dashboard</h1>
       <DashboardGrid />
     </div>
-  )
+  );
 }

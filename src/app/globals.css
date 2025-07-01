@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input, select, textarea {
+    color: rgb(17 24 39); /* gray-900 for proper contrast */
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

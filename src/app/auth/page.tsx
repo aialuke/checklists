@@ -61,6 +61,9 @@ export default async function AuthPage({ searchParams }: { searchParams: { error
               {error === 'missing-staff-number' && 'Please enter your staff number'}
               {error === 'invalid-staff-number' && 'Invalid staff number'}
               {error === 'department-required' && 'Please select your department'}
+              {error === 'server-configuration' && 'Server configuration error. Please contact IT support.'}
+              {error === 'database-error' && 'Database connection error. Please try again.'}
+              {error === 'server-error' && 'Server error occurred. Please try again or contact support.'}
             </div>
           )}
 

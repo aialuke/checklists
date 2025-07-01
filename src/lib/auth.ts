@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import type { Staff } from '@/types/auth.types';
 
 export async function getSession(): Promise<{ staff: Staff; department?: string } | null> {
-  const cookieStore = await cookies();
+  const cookieStore = cookies();
   const staffNumber = cookieStore.get('staff_number')?.value;
   const department = cookieStore.get('department')?.value;
 

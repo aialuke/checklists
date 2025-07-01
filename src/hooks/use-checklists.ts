@@ -122,7 +122,7 @@ export function useCompleteTask() {
 
       return { previousData };
     },
-    onError: (err, variables, context) => {
+    onError: (_err, _variables, context) => {
       // Rollback on error using snapshot
       if (context?.previousData) {
         context.previousData.forEach(([queryKey, data]) => {

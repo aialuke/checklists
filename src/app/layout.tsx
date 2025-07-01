@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import React from 'react';
@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   title: 'JB Checklists',
   description: 'Digital checklist system for JB staff',
   manifest: '/manifest.json',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
   themeColor: '#FDF351',
 };
 

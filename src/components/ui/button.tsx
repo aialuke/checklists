@@ -21,7 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             'hover:bg-gray-100 focus-visible:ring-gray-500': variant === 'ghost',
           },
           {
-            'h-9 px-3 text-sm': size === 'sm',
+            'h-11 px-4 text-sm': size === 'sm', // 44px minimum for touch
             'h-12 px-4 text-base': size === 'md',
             'h-14 px-6 text-lg': size === 'lg',
           },

@@ -3,7 +3,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { persistQueryClient } from '@tanstack/query-persist-client-core';
-import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
 import { useState, useEffect } from 'react';
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -32,14 +31,20 @@ export function Providers({ children }: { children: React.ReactNode }) {
     setIsClient(true);
 
     if (typeof window !== 'undefined') {
-      const persister = createSyncStoragePersister({
-        storage: window.localStorage,
-        key: 'jb-checklists-cache',
-      });
-
       persistQueryClient({
         queryClient,
-        persister,
+        persister: {
+          persistClient: (client) => {
+            window.localStorage.setItem('jb-checklists-cache', JSON.stringify(client));
+          },
+          restoreClient: () => {
+            const stored = window.localStorage.getItem('jb-checklists-cache');
+            return stored ? JSON.parse(stored) : undefined;
+          },
+          removeClient: () => {
+            window.localStorage.removeItem('jb-checklists-cache');
+          },
+        },
         maxAge: 1000 * 60 * 60 * 24, // 24 hours
       });
     }

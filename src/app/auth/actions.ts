@@ -53,7 +53,7 @@ export async function loginAction(formData: FormData) {
     };
 
     const { cookies } = await import('next/headers');
-    const cookieStore = await cookies();
+    const cookieStore = cookies();
     
     cookieStore.set('staff_number', staffNumber, cookieOptions);
     
@@ -84,7 +84,7 @@ export async function loginAction(formData: FormData) {
 export async function logoutAction() {
   try {
     const { cookies } = await import('next/headers');
-    const cookieStore = await cookies();
+    const cookieStore = cookies();
     
     cookieStore.set('staff_number', '', { 
       expires: new Date(0),

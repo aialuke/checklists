@@ -124,6 +124,10 @@ const config: KnipConfig = {
     '@typescript-eslint/eslint-plugin', // Used through ESLint rules in .eslintrc.json
     // Bundle analysis tools used via CLI but not directly imported
     'webpack-bundle-analyzer', // Used for bundle analysis via npx
+    // PostCSS plugins used in postcss.config.mjs but not directly imported
+    'cssnano', // Used in production builds via PostCSS configuration
+    // PWA dependencies used by next-pwa plugin but not directly imported
+    'next-pwa', // Used in next.config.mjs for PWA functionality
     // Keep these as they're genuinely used in build/dev but not directly imported
   ],
 

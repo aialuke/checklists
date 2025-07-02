@@ -1,49 +1,67 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
 
-# testing
+# Testing
 /coverage
+.nyc_output
 
-# next.js
+# Next.js build outputs
 /.next/
 /out/
-
-# production
 /build
 
-# misc
-.DS_Store
-*.pem
+# Production build artifacts
+/dist
 
-# debug
+# Environment variables (security - never commit)
+.env*
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
-# local env files
-.env*.local
-.env
+# Cache directories
+.eslintcache
+.stylelintcache
 
-# vercel
-.vercel
-
-# typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
 
-# Environment variables
-.env.local
-.env
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-# Supabase
+# Editor temporary files
+*.swp
+*.swo
+*~
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# Deployment platforms
+.vercel
+.netlify
+
+# Database
 .supabase/
 
-# PWA generated files
-/public/sw.js
-/public/workbox-*.js
-mobileresponsive.md
+# IDEs (optional - remove if you want to share IDE settings)
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

@@ -19,7 +19,7 @@ export default async function AuthPage({ searchParams }: { searchParams: { error
     <div className='flex min-h-screen items-center justify-center bg-gray-50'>
       <div className='w-full max-w-md space-y-8'>
         <div>
-          <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>JB Staff Login</h2>
+          <h2 className='mt-6 text-center text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900'>JB Staff Login</h2>
         </div>
         <form className='mt-8 space-y-6' action={loginAction}>
           <div className='space-y-4'>

@@ -30,7 +30,7 @@ export function DashboardGrid() {
   }
 
   return (
-    <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+    <div className='@container grid grid-cols-1 gap-6 @sm:grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4'>
       {dashboardData?.map(item => (
         <Link
           key={`${item.department}-${item.checklistType}`}
@@ -41,13 +41,13 @@ export function DashboardGrid() {
               <CardTitle className='text-secondary-500'>
                 {item.checklistType === 'OPENING' ? '🌅' : '🌙'} {item.department}
               </CardTitle>
-              <div className='text-sm text-gray-600'>{item.checklistType} Checklist</div>
+              <div className='text-sm md:text-xs text-gray-600'>{item.checklistType} Checklist</div>
             </CardHeader>
             <CardContent>
               <div className='space-y-3'>
                 <div className='flex items-center justify-between'>
-                  <span className='text-sm text-gray-600'>Progress</span>
-                  <span className='text-sm font-medium'>
+                  <span className='text-sm md:text-xs text-gray-600'>Progress</span>
+                  <span className='text-sm md:text-xs font-medium'>
                     {item.completedTasks}/{item.totalTasks}
                   </span>
                 </div>
@@ -61,7 +61,7 @@ export function DashboardGrid() {
                   />
                 </div>
 
-                <div className='text-xs text-gray-500'>
+                <div className='text-sm md:text-xs text-gray-500'>
                   {item.completionPercentage === 100 ? (
                     <span className='font-medium text-green-600'>✓ Complete</span>
                   ) : item.completedTasks > 0 ? (
@@ -72,7 +72,7 @@ export function DashboardGrid() {
                 </div>
 
                 {item.lastUpdated && (
-                  <div className='text-xs text-gray-400'>
+                  <div className='text-sm md:text-xs text-gray-400'>
                     Last updated: {new Date(item.lastUpdated).toLocaleTimeString()}
                   </div>
                 )}

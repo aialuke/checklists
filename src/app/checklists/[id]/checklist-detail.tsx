@@ -85,7 +85,7 @@ export function ChecklistDetail({ checklistId, staffNumber }: ChecklistDetailPro
                 Back
               </Button>
             </Link>
-            <h1 className='text-3xl font-bold text-gray-900'>
+            <h1 className='text-xl md:text-2xl lg:text-3xl font-bold text-gray-900'>
               {checklist.department} - {checklist.type}
             </h1>
           </div>
@@ -95,7 +95,7 @@ export function ChecklistDetail({ checklistId, staffNumber }: ChecklistDetailPro
         </div>
 
         <div className='text-right'>
-          <div className='text-primary-600 text-2xl font-bold'>
+          <div className='text-primary-600 text-lg md:text-xl lg:text-2xl font-bold'>
             {Math.round(progressPercentage)}%
           </div>
           <div className='text-sm text-gray-500'>Complete</div>
@@ -144,7 +144,7 @@ export function ChecklistDetail({ checklistId, staffNumber }: ChecklistDetailPro
                       </p>
 
                       {task.completed && task.completed_by && task.completed_at && (
-                        <p className='mt-1 text-xs text-gray-500'>
+                        <p className='mt-1 text-sm md:text-xs text-gray-500'>
                           Completed by {task.completed_by} on{' '}
                           {new Date(task.completed_at).toLocaleString()}
                         </p>

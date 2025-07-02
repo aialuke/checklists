@@ -6,7 +6,7 @@ export default async function DashboardPage() {
 
   return (
     <div className='container mx-auto py-8'>
-      <h1 className='mb-8 text-3xl font-bold text-gray-900'>Manager Dashboard</h1>
+      <h1 className='mb-8 text-xl md:text-2xl lg:text-3xl font-bold text-gray-900'>Manager Dashboard</h1>
       <DashboardGrid />
     </div>
   );

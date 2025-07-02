@@ -20,12 +20,21 @@ const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 );
 CardHeader.displayName = 'CardHeader';
 
+/**
+ * CardTitle component with container-responsive text scaling.
+ * Adapts text size based on parent container width.
+ * 
+ * @responsive
+ * - Base: text-base
+ * - Small container: @sm:text-lg
+ * - Medium container: @md:text-xl
+ */
 const CardTitle = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLHeadingElement>>(
   ({ className, ...props }, ref) => (
     // eslint-disable-next-line jsx-a11y/heading-has-content
     <h3
       ref={ref}
-      className={cn('text-lg font-semibold leading-none tracking-tight', className)}
+      className={cn('text-base @sm:text-lg @md:text-xl font-semibold leading-none tracking-tight', className)}
       {...props}
     />
   )

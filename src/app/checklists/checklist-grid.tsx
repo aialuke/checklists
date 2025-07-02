@@ -15,7 +15,7 @@ export function ChecklistGrid({ department }: ChecklistGridProps) {
 
   if (isLoading) {
     return (
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+      <div className='@container grid grid-cols-1 gap-6 @sm:grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4'>
         {Array.from({ length: 6 }).map((_, i) => (
           <Card key={i} className='animate-pulse'>
             <CardHeader>
@@ -50,7 +50,7 @@ export function ChecklistGrid({ department }: ChecklistGridProps) {
   }
 
   return (
-    <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+    <div className='@container grid grid-cols-1 gap-6 @sm:grid-cols-2 @md:grid-cols-3 @lg:grid-cols-4'>
       {checklists.map(checklist => {
         const totalTasks = checklist.tasks.length;
         const completedTasks = checklist.tasks.filter(task => task.completed).length;
@@ -62,7 +62,7 @@ export function ChecklistGrid({ department }: ChecklistGridProps) {
               <CardHeader>
                 <CardTitle className='flex items-center justify-between'>
                   <span>{checklist.type}</span>
-                  <span className='text-sm font-normal text-gray-500'>
+                  <span className='text-sm md:text-xs font-normal text-gray-500'>
                     {completedTasks}/{totalTasks}
                   </span>
                 </CardTitle>
@@ -71,7 +71,7 @@ export function ChecklistGrid({ department }: ChecklistGridProps) {
                 <div className='space-y-4'>
                   {/* Progress Bar */}
                   <div className='space-y-2'>
-                    <div className='flex justify-between text-sm'>
+                    <div className='flex justify-between text-sm md:text-xs'>
                       <span>Progress</span>
                       <span>{Math.round(progressPercentage)}%</span>
                     </div>
@@ -85,11 +85,11 @@ export function ChecklistGrid({ department }: ChecklistGridProps) {
 
                   {/* Status Badge */}
                   <div className='flex items-center justify-between'>
-                    <span className='text-xs text-gray-500'>
+                    <span className='text-sm md:text-xs text-gray-500'>
                       Created: {new Date(checklist.created_at).toLocaleDateString()}
                     </span>
                     <span
-                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-sm md:text-xs font-medium ${
                         progressPercentage === 100
                           ? 'bg-green-100 text-green-800'
                           : progressPercentage > 0

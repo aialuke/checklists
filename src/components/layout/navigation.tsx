@@ -19,7 +19,7 @@ export async function Navigation() {
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
         <div className='flex h-16 justify-between'>
           <div className='flex items-center'>
-            <Link href='/' className='text-xl font-bold text-gray-900'>
+            <Link href='/' className='text-lg @sm:text-xl @md:text-2xl font-bold text-gray-900'>
               JB Checklists
             </Link>
           </div>

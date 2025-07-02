@@ -26,7 +26,7 @@ export default async function ChecklistsPage() {
   return (
     <div className='container mx-auto px-4 py-8'>
       <div className='mb-8'>
-        <h1 className='text-3xl font-bold text-gray-900'>{department} Checklists</h1>
+        <h1 className='text-xl md:text-2xl lg:text-3xl font-bold text-gray-900'>{department} Checklists</h1>
         <p className='mt-2 text-gray-600'>Complete your daily tasks and track progress</p>
       </div>
 

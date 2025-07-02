@@ -32,18 +32,42 @@ const config: Config = {
         'safe-left': 'env(safe-area-inset-left)',
         'safe-right': 'env(safe-area-inset-right)',
       },
+      // Fluid typography with clamp-based sizing
+      fontSize: {
+        'fluid-sm': 'clamp(0.875rem, 2.5vw, 1rem)',
+        'fluid-base': 'clamp(1rem, 3vw, 1.125rem)',
+        'fluid-lg': 'clamp(1.125rem, 3.5vw, 1.25rem)',
+        'fluid-xl': 'clamp(1.25rem, 4vw, 1.5rem)',
+        'fluid-2xl': 'clamp(1.5rem, 5vw, 2.25rem)',
+        'fluid-3xl': 'clamp(1.875rem, 6vw, 3rem)',
+      },
     },
   },
   // Optimize CSS purging for production builds
   safelist: [
-    // Keep utility classes that might be used dynamically
+    // Existing classes
     'bg-primary-500',
     'bg-primary-600', 
     'bg-secondary-500',
     'bg-secondary-600',
     'bg-green-500',
     'text-green-600',
+    
+    // CRITICAL: Missing dynamic classes from template literals
+    'bg-green-100', 'text-green-800',      // Status badges - checklist-grid.tsx:94
+    'bg-yellow-100', 'text-yellow-800',    // Progress badges - checklist-grid.tsx:96  
+    'bg-gray-100', 'text-gray-800',        // Default badges - checklist-grid.tsx:97
+    'border-green-200', 'bg-green-50',     // Completed task cards - checklist-detail.tsx:123
+    'bg-gray-200', 'text-gray-400',        // Incomplete checkboxes - checklist-detail.tsx:131
+    'text-gray-500', 'line-through',       // Completed task text - checklist-detail.tsx:140
+    'text-gray-900', 'text-white',         // Task states
+    
+    // Responsive grid patterns (for container queries)
+    '@sm:grid-cols-2', '@md:grid-cols-3', '@lg:grid-cols-4',
+    '@sm:text-lg', '@md:text-xl', '@lg:text-2xl'
   ],
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/container-queries'),
+  ],
 }
 export default config

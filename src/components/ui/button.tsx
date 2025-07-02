@@ -2,6 +2,19 @@ import { ButtonHTMLAttributes, forwardRef } from 'react';
 
 import { cn } from '@/lib/utils';
 
+/**
+ * Button component with responsive container-aware text scaling.
+ * Text sizes adapt based on parent container width using @container queries.
+ * 
+ * @example
+ * <Button size="md" variant="primary">Click me</Button>
+ * 
+ * @responsive
+ * - sm: text-sm @md:text-base @lg:text-lg
+ * - md: text-base @md:text-lg @lg:text-xl  
+ * - lg: text-lg @md:text-xl @lg:text-2xl
+ */
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
@@ -21,9 +34,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             'hover:bg-gray-100 focus-visible:ring-gray-500': variant === 'ghost',
           },
           {
-            'h-11 px-4 text-sm': size === 'sm', // 44px minimum for touch
-            'h-12 px-4 text-base': size === 'md',
-            'h-14 px-6 text-lg': size === 'lg',
+            'h-11 px-4 text-sm @md:text-base @lg:text-lg': size === 'sm', // 44px minimum for touch
+            'h-12 px-4 text-base @md:text-lg @lg:text-xl': size === 'md',
+            'h-14 px-6 text-lg @md:text-xl @lg:text-2xl': size === 'lg',
           },
           className
         )}

@@ -9,7 +9,7 @@ export default async function ProfilePage() {
 
   return (
     <div className='container mx-auto py-8'>
-      <h1 className='mb-8 text-3xl font-bold text-gray-900'>Profile</h1>
+      <h1 className='mb-8 text-xl md:text-2xl lg:text-3xl font-bold text-gray-900'>Profile</h1>
 
       <Card className='max-w-md'>
         <CardHeader>
@@ -17,17 +17,17 @@ export default async function ProfilePage() {
         </CardHeader>
         <CardContent className='space-y-4'>
           <div>
-            <label className='block text-sm font-medium text-gray-700'>Name</label>
+            <label className='block text-sm md:text-base font-medium text-gray-700'>Name</label>
             <div className='mt-1 text-gray-900'>{staff.name}</div>
           </div>
 
           <div>
-            <label className='block text-sm font-medium text-gray-700'>Staff Number</label>
+            <label className='block text-sm md:text-base font-medium text-gray-700'>Staff Number</label>
             <div className='mt-1 text-gray-900'>{staff.staff_number}</div>
           </div>
 
           <div>
-            <label className='block text-sm font-medium text-gray-700'>Role</label>
+            <label className='block text-sm md:text-base font-medium text-gray-700'>Role</label>
             <div className='mt-1 text-gray-900'>
               {staff.role === 'MANAGER' ? 'Manager' : 'Team Member'}
             </div>
@@ -35,7 +35,7 @@ export default async function ProfilePage() {
 
           {department && (
             <div>
-              <label className='block text-sm font-medium text-gray-700'>Department</label>
+              <label className='block text-sm md:text-base font-medium text-gray-700'>Department</label>
               <div className='mt-1 text-gray-900'>{department}</div>
             </div>
           )}
